@@ -1,41 +1,30 @@
 import * as React from 'react';
-import {Todo, TodoActionTypes, todoReducer} from './todoReducer';
+import {Todo, useTodoList} from './hooks';
 
 function Counter() {
-  const [state, dispatch] = React.useReducer(todoReducer, []);
+  const [
+    state,
+    {
+      checkTodo,
+      deleteTodo,
+      addTodo,
+    }
+  ] = useTodoList();
   const [todoText, setTodoText] = React.useState('');
-
-  function onAddTodo(): void {
-    if (todoText) {
-      dispatch({
-        payload: todoText,
-        type: TodoActionTypes.ADD,
-      });
-
-      setTodoText('');
-    }
-  }
-
-  function onDeleteTodo(id: string) {
-    return () => {
-      dispatch({
-        payload: id,
-        type: TodoActionTypes.DELETE,
-      });
-    }
-  }
-
-  function onCheckTodo(id: string) {
-    return () => {
-      dispatch({
-        payload: id,
-        type: TodoActionTypes.CHECK,
-      });
-    }
-  }
 
   function onChangeNewTodoText(event: React.ChangeEvent<HTMLInputElement>) {
     setTodoText(event.target.value);
+  }
+
+  const onCheckTodo = (id: string) => () => checkTodo(id);
+  const onDeleteTodo = (id: string) => () => deleteTodo(id);
+  const onAddTodo = (text: string) => {
+    return () => {
+      if (text) {
+        addTodo(text);
+        setTodoText('');
+      }
+    }
   }
 
   const todoListMarkup = state.map((todo: Todo) => (
@@ -53,7 +42,7 @@ function Counter() {
   const createTodoMarkup = (
     <>
       <input type="text" onChange={onChangeNewTodoText} value={todoText} />
-      <button onClick={onAddTodo}>Create todo</button>
+      <button onClick={onAddTodo(todoText)}>Create todo</button>
     </>
   );
 
