@@ -25,7 +25,7 @@ function Counter() {
         setTodoText('');
       }
     }
-  }
+  };
 
   const todoListMarkup = state.map((todo: Todo) => (
     <div key={todo.id}>
@@ -38,7 +38,7 @@ function Counter() {
       <button onClick={onDeleteTodo(todo.id)}>🗑</button>
     </div>
   ));
-  
+
   const createTodoMarkup = (
     <>
       <input type="text" onChange={onChangeNewTodoText} value={todoText} />
@@ -51,7 +51,7 @@ function Counter() {
       {createTodoMarkup}
       {todoListMarkup}
     </div>
-  )
+  );
 }
 
 export default Counter;
