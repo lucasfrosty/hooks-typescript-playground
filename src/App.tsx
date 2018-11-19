@@ -1,8 +1,8 @@
 import * as React from 'react';
-import TodoList from './TodoList';
+import {TicTacToe} from './components';
 
 function App() {
-  return <TodoList />;
+  return <TicTacToe />;
 }
 
 export default App;
