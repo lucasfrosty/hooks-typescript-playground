@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import { SquareContent } from '../../TicTacToe';
+import {SquareContent} from '../../TicTacToe';
 
 function renderBorder(border?: boolean) {
   return border ? '2px solid #000' : 0;
