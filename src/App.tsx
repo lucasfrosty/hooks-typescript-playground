@@ -1,8 +1,14 @@
 import * as React from 'react';
-import {TicTacToe} from './components';
+
+import {GithubInfo} from './components';
+import {GithubGraphQLProvider} from './foundations'
 
 function App() {
-  return <TicTacToe />;
+  return (
+    <GithubGraphQLProvider>
+      <GithubInfo />
+    </GithubGraphQLProvider>
+  );
 }
 
 export default App;
