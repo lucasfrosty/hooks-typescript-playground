@@ -14,9 +14,12 @@ interface Props {
 };
 
 function GithubGraphQLProvider({children}: Props) {
+  const fallback = <div>Loading...</div>;
   return (
     <ApolloProvider client={client}>
-      {children}
+      <React.Suspense fallback={fallback} >
+        {children}
+      </React.Suspense>
     </ApolloProvider>
   );
 }
