@@ -1,14 +1,9 @@
 import * as React from 'react';
 
-import {GithubInfo} from './components';
-import {GithubGraphQLProvider} from './foundations'
+import {ResolutionTracker} from './components';
 
 function App() {
-  return (
-    <GithubGraphQLProvider>
-      <GithubInfo />
-    </GithubGraphQLProvider>
-  );
+  return <ResolutionTracker />;
 }
 
 export default App;
