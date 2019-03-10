@@ -1,9 +1,9 @@
 import * as React from 'react';
 
-import {ResolutionTracker} from './components';
+import {Stopwatch} from './components';
 
 function App() {
-  return <ResolutionTracker />;
+  return <Stopwatch />;
 }
 
 export default App;
